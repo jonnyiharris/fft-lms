@@ -4,7 +4,7 @@
 #include "ft.hpp"
 
 template <typename T>
-class Dft : ft<T>
+class Dft : public ft<T>
 {
 public:
     Dft();

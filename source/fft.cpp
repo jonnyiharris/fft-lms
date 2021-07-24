@@ -8,8 +8,10 @@ Fft<T>::Fft()
 
 // TODO: return a span
 template <typename T>
-std::vector<T> Fft<T>::to_fd()
+const ft_vec<T> to_fd(ft_span<T> td)
 {
-    std::vector<int> td {};
-    std::vector<int> fd {};
+    ft_vec<int> fd {};
+    return fd;
 }
+
+template class Fft<double>;

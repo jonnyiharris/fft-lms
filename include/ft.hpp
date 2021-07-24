@@ -5,6 +5,9 @@
 #include <span>
 #include <complex>
 
+#include <iostream>
+#include <iomanip>
+
 template <typename T>
 using ft_vec = std::vector<std::complex<T>>;
 
@@ -17,5 +20,23 @@ class ft
 {
 public:
     const ft_vec<T> virtual to_fd(ft_span<T> td) = 0;
+
+    void print_vec(ft_span<T> span){
+        std::cout << std::setw(16) << "real";
+        std::cout << " | ";
+        std::cout << std::setw(16) << "imag";
+        std::cout << std::endl;
+
+        std::cout << "---------------- | ----------------";
+        std::cout << std::endl;
+
+        for ( auto fd_elem : span )
+        {
+            std::cout << std::setw(16) << fd_elem.real();
+        std::cout << " | ";
+            std::cout << std::setw(16) << fd_elem.imag();
+            std::cout << std::endl;
+        }
+    };
 };
 #endif // FT_HPP

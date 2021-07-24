@@ -8,7 +8,7 @@ class Fft : ft<T>
 {
 public:
     Fft();
-    std::vector<T> to_fd() override;
+    const ft_vec<T> to_fd(ft_span<T> td) override;
 };
 
 #endif // FFT_HPP

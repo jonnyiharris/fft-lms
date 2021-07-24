@@ -32,10 +32,10 @@ const std::vector<ft_vec<T>> Dft<T>::dft_matrix(size_t size)
 }
 
 template <typename T>
-const std::vector<std::complex<T>> Dft<T>::to_fd(std::span<std::complex<T>> td)
+const ft_vec<T> Dft<T>::to_fd(ft_span<T> td)
 {
     std::cout << "DFT!" << std::endl;
-    std::vector<std::complex<T>> fd {};
+    ft_vec<T> fd {};
 
     auto matrix {dft_matrix(td.size())};
 
