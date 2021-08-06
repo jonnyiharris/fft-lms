@@ -7,12 +7,12 @@
 template <typename T,size_t N>
 Fft<T,N>::Fft()
 {
-    plan_to_td = fftw_plan_dft_c2r_1d(N,fd,td,FFTW_ESTIMATE);
-    plan_to_fd = fftw_plan_dft_r2c_1d(N,td,fd,FFTW_ESTIMATE);
-
     // TODO: use std::array
     td = static_cast<T*>( fftw_malloc(sizeof(T)*(N)));
     fd = static_cast<fftw_complex*>( fftw_malloc(sizeof(fftw_complex)*(N/2+1)));
+
+    plan_to_td = fftw_plan_dft_c2r_1d(N,fd,td,FFTW_ESTIMATE);
+    plan_to_fd = fftw_plan_dft_r2c_1d(N,td,fd,FFTW_ESTIMATE);
 }
 
 template <typename T,size_t N>
@@ -36,7 +36,6 @@ template <typename T,size_t N>
 const fftw_complex* Fft<T,N>::to_fd(std::span<T> inp_td)
 {
     std::memcpy(td,inp_td.data(),sizeof(T)*N);
-    plan_to_fd = fftw_plan_dft_r2c_1d(N,td,fd,FFTW_ESTIMATE);
     fftw_execute(plan_to_fd);
     return fd;
 }
