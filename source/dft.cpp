@@ -32,7 +32,7 @@ const std::vector<ft_vec<T>> Dft<T>::dft_matrix(size_t size)
 }
 
 template <typename T>
-const ft_vec<T> Dft<T>::to_fd(ft_span<T> td)
+const ft_vec<T> Dft<T>::to_fd_old(ft_span<T> td)
 {
     std::cout << "DFT!" << std::endl;
     ft_vec<T> fd {};

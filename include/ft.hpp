@@ -5,6 +5,8 @@
 #include <span>
 #include <complex>
 
+#include <fftw3.h>
+
 #include <iostream>
 #include <iomanip>
 
@@ -19,7 +21,8 @@ template <typename T>
 class ft
 {
 public:
-    const ft_vec<T> virtual to_fd(ft_span<T> td) = 0;
+    const ft_vec<T> virtual to_fd_old(ft_span<T> td) = 0;
+    const virtual fftw_complex *to_fd(std::span<T> inp_td) = 0;
 
     void print_vec(ft_span<T> span){
         std::cout << std::setw(16) << "real";

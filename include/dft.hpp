@@ -8,7 +8,7 @@ class Dft : public ft<T>
 {
 public:
     Dft();
-    const ft_vec<T> to_fd(ft_span<T> td) override;
+    const ft_vec<T> to_fd_old(ft_span<T> td) override;
 private:
     const std::vector<ft_vec<T>> dft_matrix(size_t size);
 };
