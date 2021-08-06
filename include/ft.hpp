@@ -24,7 +24,7 @@ public:
     const ft_vec<T> virtual to_fd_old(ft_span<T> td) = 0;
     const virtual fftw_complex *to_fd(std::span<T> inp_td) = 0;
 
-    void print_vec(const fftw_complex *fd){
+    void print_vec(const std::complex<T> *fd){
         std::cout << std::setw(16) << "real";
         std::cout << " | ";
         std::cout << std::setw(16) << "imag";
@@ -35,9 +35,9 @@ public:
 
         for (size_t i {}; i < 8/2+1; i++)
         {
-            std::cout << std::setw(16) << fd[i][0];
+            std::cout << std::setw(16) << std::real(fd[i]);
         std::cout << " | ";
-            std::cout << std::setw(16) << fd[i][1];
+            std::cout << std::setw(16) << std::imag(fd[i]);
             std::cout << std::endl;
         }
     };
