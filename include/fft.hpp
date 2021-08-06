@@ -4,8 +4,8 @@
 #include <fftw3.h>
 #include "ft.hpp"
 
-template <typename T,int N>
-class Fft : ft<T>
+template <typename T,size_t N>
+class Fft : public ft<T,N>
 {
 public:
     Fft();

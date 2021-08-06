@@ -17,14 +17,14 @@ template <typename T>
 using ft_span = std::span<std::complex<T>>;
 
 
-template <typename T>
+template <typename T,size_t N>
 class ft
 {
 public:
     const ft_vec<T> virtual to_fd_old(ft_span<T> td) = 0;
     const virtual fftw_complex *to_fd(std::span<T> inp_td) = 0;
 
-    void print_vec(ft_span<T> span){
+    void print_vec(const fftw_complex *fd){
         std::cout << std::setw(16) << "real";
         std::cout << " | ";
         std::cout << std::setw(16) << "imag";
@@ -33,11 +33,11 @@ public:
         std::cout << "---------------- | ----------------";
         std::cout << std::endl;
 
-        for ( auto fd_elem : span )
+        for (size_t i {}; i < 8/2+1; i++)
         {
-            std::cout << std::setw(16) << fd_elem.real();
+            std::cout << std::setw(16) << fd[i][0];
         std::cout << " | ";
-            std::cout << std::setw(16) << fd_elem.imag();
+            std::cout << std::setw(16) << fd[i][1];
             std::cout << std::endl;
         }
     };
